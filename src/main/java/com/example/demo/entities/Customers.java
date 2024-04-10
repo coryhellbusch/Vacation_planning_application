@@ -16,7 +16,7 @@ import java.util.Set;
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
+    @Column(name = "customer_id", insertable = false, updatable = false)
     private Long id;
 
     @Column(name = "address")
@@ -49,7 +49,7 @@ public class Customers {
     @JoinColumn(name = "division_id", nullable = false, insertable = false, updatable = false)
     private Divisions divisions;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private Set<Carts> cartsSet;
 
 }

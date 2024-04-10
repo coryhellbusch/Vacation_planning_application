@@ -40,14 +40,14 @@ public class Carts {
         @Column(name = "last_update")
         private Date lastUpdate;
 
-        @Column(name = "customer_id")
-        private Long customer;
+//        @Column(name = "customer_id")
+//        private Long customer;
 
         @ManyToOne
         @JoinColumn(name = "customer_id", nullable = false)
         private Customers customers;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart_id")
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItemId")
         private Set<CartItems> cartItemsSet;
 
         public enum Status {

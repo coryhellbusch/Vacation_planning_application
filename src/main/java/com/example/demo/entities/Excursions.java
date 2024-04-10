@@ -36,8 +36,8 @@ public class Excursions {
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    @Column(name = "vacation_id")
-    private Long vacationId;
+//    @Column(name = "vacation_id")
+//    private Long vacationId;
 
     @ManyToOne
     @JoinColumn(name = "cart_item_id")
@@ -47,6 +47,6 @@ public class Excursions {
     @JoinColumn(name = "vacation_id")
     private Vacations vacations;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "excursion_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItemId")
     private Set<CartItems> cartItemsSet;
 }

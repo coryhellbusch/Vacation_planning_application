@@ -30,7 +30,7 @@ public class Countries {
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "country_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private Set<Divisions> divisionsSet;
 
 }
