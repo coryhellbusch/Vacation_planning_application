@@ -1,8 +1,7 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,12 +13,15 @@ import java.util.Set;
 @Table(name="customers")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", insertable = false, updatable = false)
     private Long id;
 
+    @NonNull
     @Column(name = "address")
     private String address;
 
@@ -27,9 +29,11 @@ public class Customers {
     @Column(name = "create_date")
     private Date createDate;
 
+    @NonNull
     @Column(name = "customer_first_name")
     private String firstName;
 
+    @NonNull
     @Column(name = "customer_last_name")
     private String lastName;
 
@@ -37,17 +41,16 @@ public class Customers {
     @Column(name = "last_update")
     private Date lastUpdate;
 
+    @NonNull
     @Column(name = "phone")
     private String phone;
 
+    @NonNull
     @Column(name = "postal_code")
     private String postal_code;
 
-    @Column(name = "division_id")
-    private Long divisionId;
-
     @ManyToOne
-    @JoinColumn(name = "division_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "division_id", insertable = false, updatable = false)
     private Divisions divisions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
