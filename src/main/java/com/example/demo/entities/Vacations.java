@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -35,12 +36,12 @@ public class Vacations {
     private Date lastUpdate;
 
     @Column(name = "travel_fare_price")
-    private Double travel_price;
+    private BigDecimal travel_price;
 
     @Column(name = "vacation_title")
     private String vacation_title;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-    private Set<Excursions> excursionsSet;
+    private Set<Excursions> excursions;
 
 }

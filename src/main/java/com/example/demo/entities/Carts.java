@@ -6,7 +6,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,7 +22,7 @@ public class Carts {
         private Long id;
 
         @Column(name = "package_price")
-        private Double package_price;
+        private BigDecimal package_price;
 
         @Column(name = "party_size")
         private Integer party_size;
@@ -50,10 +52,18 @@ public class Carts {
         @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItemId")
         private Set<CartItems> cartItemsSet;
 
+        public void add(CartItems item) {
+                if (cartItemsSet == null) {
+                        cartItemsSet = new HashSet<>();
+                }
+                cartItemsSet.add(item);
+                item.setCarts(this);
+        }
+
         public enum Status {
-                PENDING,
-                ORDERED,
-                CANCELED
+                pending,
+                ordered,
+                canceled
         }
 
 }

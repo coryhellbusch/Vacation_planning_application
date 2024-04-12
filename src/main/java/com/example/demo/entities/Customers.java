@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -52,4 +53,11 @@ public class Customers {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private Set<Carts> cartsSet;
 
+    public void add(Carts carts) {
+        if (cartsSet == null) {
+            cartsSet = new HashSet<>();
+        }
+        cartsSet.add(carts);
+        carts.setCustomers(this);
+    }
 }
