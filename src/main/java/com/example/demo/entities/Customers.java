@@ -16,6 +16,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customers {
+
+    public Customers(String address, String firstName, String lastName, String phone, String postal_code) {
+        this.address = address;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.postal_code = postal_code;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", insertable = false, updatable = false)
@@ -56,6 +65,7 @@ public class Customers {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private Set<Carts> cartsSet;
 
+
     public void add(Carts carts) {
         if (cartsSet == null) {
             cartsSet = new HashSet<>();
@@ -63,4 +73,5 @@ public class Customers {
         cartsSet.add(carts);
         carts.setCustomers(this);
     }
+
 }
