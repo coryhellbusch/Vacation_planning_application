@@ -41,7 +41,7 @@ public class Vacations {
     @Column(name = "vacation_title")
     private String vacation_title;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vacations")
     private Set<Excursions> excursions;
 
 }

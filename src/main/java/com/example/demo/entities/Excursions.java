@@ -44,7 +44,7 @@ public class Excursions {
 //    @JoinColumn(name = "cart_item_id")
 //    private CartItems cartItems;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vacation_id")
     private Vacations vacations;
 
