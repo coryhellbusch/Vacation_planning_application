@@ -17,12 +17,13 @@ import java.util.Set;
 @AllArgsConstructor
 public class Customers {
 
-    public Customers(String address, String firstName, String lastName, String phone, String postal_code) {
+    public Customers(String address, String firstName, String lastName, String phone, String postal_code, Divisions divisions) {
         this.address = address;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.postal_code = postal_code;
+        this.divisions = divisions;
     }
 
     @Id
@@ -59,7 +60,7 @@ public class Customers {
     private String postal_code;
 
     @ManyToOne
-    @JoinColumn(name = "division_id", insertable = false, updatable = false)
+    @JoinColumn(name = "division_id")
     private Divisions divisions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
