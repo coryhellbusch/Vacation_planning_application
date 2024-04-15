@@ -19,5 +19,6 @@ public class CheckoutController {
     public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
 
         return checkoutService.placeOrder(purchase);
+//        gets the objects for customer, cart and cartItems from the front end
     }
 }
