@@ -35,6 +35,10 @@ public class CartItems {
     @JoinColumn(name = "cart_id")
     private Carts carts;
 
-    @ManyToMany(mappedBy = "cartItemsSet")
+    @ManyToMany
+    @JoinTable(name = "excursion_cartitem",
+        joinColumns = @JoinColumn(name = "cart_item_id"),
+        inverseJoinColumns = @JoinColumn(name = "excursion_id"))
     private Set<Excursions> excursions;
+
 }

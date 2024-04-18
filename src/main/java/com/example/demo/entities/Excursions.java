@@ -51,13 +51,7 @@ public class Excursions {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItemId")
 //    private Set<CartItems> cartItemsSet;
 
-//    @ManyToMany(mappedBy = "excursionsSet")
-//    private Set<CartItems> cartItems;
-
-    @ManyToMany
-    @JoinTable(name = "excursion_cartitem",
-        joinColumns = @JoinColumn(name = "excursion_id"),
-        inverseJoinColumns = @JoinColumn(name = "cart_item_id"))
-    private Set<CartItems> cartItemsSet;
+    @ManyToMany(mappedBy = "excursions")
+    private Set<CartItems> cartItems;
 
 }
